@@ -24,6 +24,45 @@
       border-bottom: 3px solid transparent;
     }
   </style>
+  
+  
+  
+    <script>
+      function showOrHideSubscribe(subscribeToday,subscribeThankyou) {
+	  debugger;
+        var vsubscribeToday = document.getElementById(subscribeToday);
+        var vsubscribeThankyou = document.getElementById(subscribeThankyou);
+     
+      
+        if (vsubscribeToday.style.display === "none") {
+          vsubscribeToday.style.display = "inline";        
+          vsubscribeThankyou.style.display = "none";
+        } else {
+          vsubscribeToday.style.display = "none";         
+          vsubscribeThankyou.style.display = "inline";
+        }
+      }
+	  
+	  function hide() {
+		document.getElementById('divThankyou').hidden = false
+		 document.getElementById('divFullname').hidden = true
+		 document.getElementById('divPhone').hidden = true
+		 document.getElementById('divEmail').hidden = true
+		 document.getElementById('divMessage').hidden = true
+		 document.getElementById('divSubmit').hidden = true
+	 
+	  }
+
+	  function show() {
+		document.getElementById('divFullname').hidden = true
+		 document.getElementById('divPhone').hidden = true
+		 document.getElementById('divEmail').hidden = true
+		 document.getElementById('divMessage').hidden = true
+		 document.getElementById('divSubmit').hidden = true
+	  }
+      </script>
+
+
 
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
@@ -597,41 +636,41 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 col-sm-6 pb-5">
-              <h3 class="header-style pb-4">Get in touch</h3>
-              <form class="was-validated" action="send-mail.php" method="POST">
-                <div class="form-floating mb-3" id="divThankyou" hidden>
-                  <b> Thankyou for submitting details</b>
-                </div>
-
-                <div class="form-floating mb-3" id="divFullname">
-                  <input type="text" class="form-control" id="fullname" placeholder="Enter Full Name" name="fullname"
-                    required>
-                  <label for="fullname">Full Name</label>
-                </div>
-
-                <div class="form-floating mb-3 mt-3" id="divPhone">
-                  <input type="number" class="form-control" id="phoneno" placeholder="Enter Phone Number" name="phoneno"
-                    required>
-                  <label for="phoneno">Phone Number</label>
-                </div>
-
-                <div class="form-floating mb-3 mt-3" id="divEmail">
-                  <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" required>
-                  <label for="email">Email</label>
-                </div>
-
-                <div class="form-floating mt-3 mb-3" id="divMessage">
-                  <textarea class="form-control" rows="5" id="message" placeholder="Enter Message" name="message"
-                    required></textarea>
-                  <label for="message">Message</label>
-                </div>
-                <div class="form-floating mt-3 mb-3" id="divSubmit">
-                  <button onclick="hide()" class="btn btn-success px-5 float-end"> <i class="bi bi-send-check-fill"></i>
-                    Submit</button>
-                </div>
-              </form>
+			<div class="form-floating mb-3" id="contactThankyou" style="display:none">
+				<b> Thankyou for submitting details</b>
             </div>
+			
+            <div class="col-lg-6 col-sm-6 pb-5">
+                  <h3 class="header-style pb-4">Get in touch</h3>
+                  <form   class="was-validated" action="#"> 
+                    <div class="form-floating mb-3" id="divThankyou" hidden>
+                      <b> Thankyou for submitting details</b>
+                    </div>
+                    
+                    <div class="form-floating mb-3" id="divFullname">
+                      <input type="text" class="form-control" id="fullname" placeholder="Enter Full Name" name="fullname" required>
+                      <label for="fullname">Full Name</label>
+                    </div>
+
+                    <div class="form-floating mb-3 mt-3" id="divPhone">
+                      <input type="number" class="form-control" id="phoneno" placeholder="Enter Phone Number" name="phoneno" required>
+                      <label for="phoneno">Phone Number</label>
+                    </div>
+
+                    <div class="form-floating mb-3 mt-3" id="divEmail">
+                      <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" required>
+                      <label for="email">Email</label>
+                    </div>
+                    
+                    <div class="form-floating mt-3 mb-3"  id="divMessage">
+                      <textarea  class="form-control" rows="5" id="message" placeholder="Enter Message" name="message" required></textarea>
+                      <label for="message">Message</label>
+                    </div>
+                    <div class="form-floating mt-3 mb-3" id="divSubmit">
+                      <button type = "button" onclick="hide()" class="btn btn-success px-5 float-end"> <i class="bi bi-send-check-fill"></i> Submit</button>
+                    </div>
+                  </form>
+                </div>
           </div>
         </div>
       </div>
@@ -671,15 +710,23 @@
                 </div>
               </div>
               <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="single_footer single_footer_address">
+                <div class="single_footer single_footer_address"  id="subscribeToday" >
                   <h4>Subscribe today</h4>
                   <div class="signup_form">
                     <form action="#" class="subscribe">
-                      <input type="text" class="subscribe__input" placeholder="Enter Email Address" />
-                      <button type="button" class="subscribe__btn"><i class="fas fa-paper-plane"></i></button>
+                      <input type="email" class="subscribe__input" placeholder="Enter Email Address" />
+                      <button type="button" class="subscribe__btn"><i class="fas fa-paper-plane" onclick="showOrHideSubscribe('subscribeToday','subscribeThankyou')"></i></button>
                     </form>
                   </div>
                 </div>
+				<div class="single_footer single_footer_address"   id="subscribeThankyou" style="display:none">
+					<div class="row">
+						<div class="col-sm-10">
+							<h4 style="margin-top:1cm; padding-left:2px;">Thankyou for Subscribing Us </h4>
+						</div>
+						<div class="col-sm-11"><button type="button" class="btn-close btn-close-white" id="cross" onclick="showOrHideSubscribe('subscribeToday','subscribeThankyou'"></button></div>
+					</div>
+			    </div>
                 <div class="social_profile">
                   <ul>
                     <li><a href="https://www.linkedin.com/in/cogentix-systems-21a073281/" target=”_blank”><i
